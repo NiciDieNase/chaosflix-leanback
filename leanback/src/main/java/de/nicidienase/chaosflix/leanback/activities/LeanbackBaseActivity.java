@@ -10,7 +10,7 @@ import android.os.IBinder;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 
-import de.nicidienase.chaosflix.shared.network.MediaApiService;
+import de.nicidienase.chaosflix.common.network.MediaApiService;
 import io.reactivex.Single;
 
 /**
