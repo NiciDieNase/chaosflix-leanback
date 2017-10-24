@@ -8,9 +8,8 @@ import android.support.v17.leanback.widget.ListRow;
 import android.support.v17.leanback.widget.ListRowPresenter;
 import android.support.v17.leanback.widget.SectionRow;
 
-import com.google.common.collect.Lists;
-
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -120,7 +119,7 @@ public class ConferencesBrowseFragment extends BrowseFragment {
 			mStreamingSection = new SectionRow(streamingHeader);
 			mRowsAdapter.add(0, mStreamingSection);
 			for (LiveConference con : liveConferences) {
-				if(!con.getConference().equals("Sendeschleife")){
+				if(!con.getConference().equals("Sendeschleife") || BuildConfig.DEBUG){
 					int i = -1;
 					for (i = 0; i < con.getGroups().size(); i++) {
 						Group g = con.getGroups().get(i);
@@ -145,8 +144,13 @@ public class ConferencesBrowseFragment extends BrowseFragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		List<WatchlistItem> watchlistItems
-				= Lists.newArrayList(WatchlistItem.findAll(WatchlistItem.class));
+
+		List<WatchlistItem> watchlistItems = new ArrayList<>();
+		Iterator<WatchlistItem> all = WatchlistItem.findAll(WatchlistItem.class);
+		while (all.hasNext()){
+			watchlistItems.add(all.next());
+		}
+//				= Lists.newArrayList(WatchlistItem.findAll(WatchlistItem.class));
 		// setup and list items
 		updateWatchlist(watchlistItems);
 	}

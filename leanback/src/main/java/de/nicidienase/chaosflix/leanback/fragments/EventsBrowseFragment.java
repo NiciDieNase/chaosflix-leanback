@@ -34,12 +34,13 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.GlideDrawable;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.google.common.collect.Lists;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Timer;
@@ -113,7 +114,12 @@ public class EventsBrowseFragment extends BrowseFragment {
 		CardPresenter cardPresenter = new CardPresenter();
 
 		List<Event> other = new LinkedList<Event>();
-		List<String> keys = Lists.newArrayList(eventsByTags.keySet());
+//		List<String> keys = Lists.newArrayList(eventsByTags.keySet());
+		List<String> keys = new ArrayList<>();
+		Iterator<String> iterator = eventsByTags.keySet().iterator();
+		while (iterator.hasNext()){
+			keys.add(iterator.next());
+		}
 		Collections.sort(keys);
 		for (String tag : keys) {
 			List<Event> items = eventsByTags.get(tag);
