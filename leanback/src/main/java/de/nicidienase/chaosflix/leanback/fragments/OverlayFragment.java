@@ -21,6 +21,7 @@ import android.support.v17.leanback.widget.Row;
 import android.util.Log;
 
 import java.util.List;
+import java.util.Set;
 
 import de.nicidienase.chaosflix.common.entities.PlaybackProgress;
 import de.nicidienase.chaosflix.leanback.CardPresenter;
@@ -228,7 +229,7 @@ public class OverlayFragment extends PlaybackFragment {
 
 	private Row getRelatedItems() {
 		ArrayObjectAdapter listRowAdapter = new ArrayObjectAdapter(new CardPresenter());
-		final long[] related = mSelectedEvent.getMetadata().getRelated();
+		final Set<Long> related = mSelectedEvent.getMetadata().getRelated().keySet();
 		mDisposables.add(((LeanbackBaseActivity) getActivity()).getApiServiceObservable()
 				.observeOn(AndroidSchedulers.mainThread())
 				.subscribe(
