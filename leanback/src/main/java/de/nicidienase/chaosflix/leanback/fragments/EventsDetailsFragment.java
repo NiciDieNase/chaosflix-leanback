@@ -364,7 +364,7 @@ public class EventsDetailsFragment extends DetailsFragment {
 		if (recordings != null) {
 			for (int i = 0; i < recordings.size(); i++) {
 				Recording recording = recordings.get(i);
-				if (recording.getMimeType().startsWith("video/") || true) {
+				if (recording.getMimeType().startsWith("video/")) {
 					String quality = recording.isHighQuality() ? "HD" : "SD";
 					String title = quality + " (" + recording.getLanguage() + ")";
 					actionsAdapter.add(new Action(recording.getApiID(), title, recording.getMimeType().substring(6)));
