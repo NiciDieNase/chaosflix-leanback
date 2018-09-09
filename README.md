@@ -1,3 +1,5 @@
+Because it was annoying managing three projects chaosflix will be merged back into one repository at [nicidienase/chaosflix](https://github.com/NiciDieNase/chaosflix)
+
 # Chaosflix
 
 A Android TV / FireTV app to watch content from media.ccc.de
